@@ -168,7 +168,7 @@ export default function Home({ blogs, banners }: any) {
       </Head>
       <div>
 
-        {/* <HeroSection /> */}
+        <HeroSection />
         <HeroSection banners={banners} />
         <FeaturedCategories />
         <NewArrivals />

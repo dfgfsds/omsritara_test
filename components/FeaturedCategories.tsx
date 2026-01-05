@@ -295,11 +295,21 @@ export default function FeaturedCategories() {
   const total = data.length;
   if (!total) return null;
 
-  const looped = Array(30).fill(data).flat();
-  const [current, setCurrent] = useState(total * 15);
+  // const looped = Array(30).fill(data).flat();
+  // const [current, setCurrent] = useState(total * 15);
+  const LOOP_COUNT = 10;
+  const looped = Array(LOOP_COUNT).fill(data).flat();
+  const [current, setCurrent] = useState(total * Math.floor(LOOP_COUNT / 2));
+  const middleIndex = total * Math.floor(LOOP_COUNT / 2);
+
   const timeoutRef = useRef<any>(null);
 
-  const [screenWidth, setScreenWidth] = useState(0);
+  // const [screenWidth, setScreenWidth] = useState(0);
+
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+
 
   useEffect(() => {
     const update = () => setScreenWidth(window.innerWidth);
@@ -331,11 +341,37 @@ export default function FeaturedCategories() {
   const prevSlide = () => setCurrent((p) => p - 1);
 
   /* autoplay */
+  // useEffect(() => {
+  //   clearTimeout(timeoutRef.current);
+  //   timeoutRef.current = setTimeout(nextSlide, 2500);
+  //   return () => clearTimeout(timeoutRef.current);
+  // }, [current]);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     setCurrent((p) => p + 1);
+  //   }, 2500);
+
+  //   return () => clearInterval(id);
+  // }, []);
+
   useEffect(() => {
-    clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(nextSlide, 2500);
-    return () => clearTimeout(timeoutRef.current);
-  }, [current]);
+  const id = setInterval(() => {
+    setCurrent((p) => p + 1);
+  }, 2500);
+
+  return () => clearInterval(id);
+}, [current]);
+
+
+useEffect(() => {
+  if (current >= total * (LOOP_COUNT - 2)) {
+    setCurrent(middleIndex);
+  }
+  if (current <= total) {
+    setCurrent(middleIndex);
+  }
+}, [current, total, middleIndex]);
+
 
   /* swipe */
   const touchStartX = useRef<number | null>(null);
@@ -359,7 +395,7 @@ export default function FeaturedCategories() {
   };
 
   const activeDot = ((current % total) + total) % total;
-  console.log(looped)
+
   return (
     <section className="mt-16">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -423,6 +459,7 @@ export default function FeaturedCategories() {
                     alt={cat?.name}
                     width={160} // same as w-40
                     height={160} // same as h-40
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
@@ -439,8 +476,10 @@ export default function FeaturedCategories() {
         <div className="flex justify-center mt-8 gap-5">
           {Array.from({ length: total }).map((_, idx) => (
             <button
+              aria-label={`Go to category ${idx + 1}`}
               key={idx}
-              onClick={() => setCurrent(total * 15 + idx)}
+              // onClick={() => setCurrent(total * 15 + idx)}
+              onClick={() => setCurrent(middleIndex + idx)}
               className={`h-1.5 rounded-full transition-all
                 ${idx === activeDot ? "bg-black w-3" : "bg-gray-300 w-1.5"}
               `}
