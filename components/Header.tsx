@@ -663,12 +663,22 @@ const Header: React.FC = () => {
         {/* TOP ROW */}
         <div className="flex items-center justify-between py-3 mx-6 lg:mx-10">
           <Link href="/">
-            <Image
+            {/* <Image
               src={logo}
               alt="Omsritara Logo"
               className="w-24 h-auto"
               priority
+            /> */}
+            <Image
+              src={logo}
+              alt="Omsritara Logo"
+              width={96}        // w-24 = 96px
+              height={48}       // correct aspect ratio
+              priority
+              sizes="96px"
+              className="h-auto"
             />
+
           </Link>
 
           {/* DESKTOP RIGHT */}

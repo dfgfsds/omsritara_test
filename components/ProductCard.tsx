@@ -118,7 +118,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         const percentage = Math.round(((mrp - sellingPrice) / mrp) * 100);
         return percentage > 0 ? `${percentage}% OFF` : null;
     };
-    
+
 
     const discountBadge = getDiscountPercentage();
     const randomRating = (4.5 + Math.random() * 0.5).toFixed(1);
@@ -137,26 +137,48 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     <div className="relative overflow-hidden">
                         {/* Base Image */}
                         {image && (
+                            // <Image
+                            //     src={image}
+                            //     alt={title}
+                            //     width={300}
+                            //     height={400}
+                            //     className="object-fill w-full  mx-auto  transition-opacity duration-500 md:group-hover:opacity-0 rounded-md"
+                            // />
                             <Image
                                 src={image}
                                 alt={title}
                                 width={300}
                                 height={400}
-                                className="object-fill w-full  mx-auto  transition-opacity duration-500 md:group-hover:opacity-0 rounded-md"
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 293px"
+                                className="object-fill w-full mx-auto transition-opacity duration-300 md:group-hover:opacity-0 rounded-md"
+                            // sizes="(max-width: 768px) 50vw, 293px"
+                            // className="object-fill w-full mx-auto transition-opacity duration-500 md:group-hover:opacity-0 rounded-md"
                             />
+
                         )}
 
                         {/* Hover Image Sliding In */}
                         {hoverImage && (
+                            // <Image
+                            //     src={hoverImage}
+                            //     alt={`${title} - hover`}
+                            //     width={300}
+                            //     height={400}
+
+                            //     className="object-fill w-full  mx-auto absolute top-0 left-0 transform translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 ease-in-out rounded-md"
+
+                            // />
                             <Image
                                 src={hoverImage}
                                 alt={`${title} - hover`}
                                 width={300}
                                 height={400}
-
-                                className="object-fill w-full  mx-auto absolute top-0 left-0 transform translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 ease-in-out rounded-md"
-
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 293px"
+                                className="object-fill w-full mx-auto absolute top-0 left-0 translate-x-full md:group-hover:translate-x-0 transition-transform duration-300 rounded-md"
+                            // sizes="(max-width: 768px) 50vw, 293px"
+                            // className="object-fill w-full mx-auto absolute top-0 left-0 transform translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 ease-in-out rounded-md"
                             />
+
                         )}
                     </div>
 

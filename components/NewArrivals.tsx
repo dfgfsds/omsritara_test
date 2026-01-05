@@ -150,22 +150,27 @@ import { useRouter } from "next/navigation";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import bg from "@/public/omsritara-new-arrivalas-bg.png";
+import Image from "next/image";
 
 export default function NewArrivals() {
-   const { products, isLoading }: any = useProducts();
+  const { products, isLoading }: any = useProducts();
   const { cartItem }: any = useCartItem();
   const { wishList }: any = useWishList();
   const router = useRouter();
 
   /* ---------------- SCREEN WIDTH ---------------- */
-  const [screenWidth, setScreenWidth] = useState(0);
+  // const [screenWidth, setScreenWidth] = useState(0);
 
-  useEffect(() => {
-    const resize = () => setScreenWidth(window.innerWidth);
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  }, []);
+  const screenWidth =
+    typeof window !== "undefined" ? window.innerWidth : 1280;
+
+
+  // useEffect(() => {
+  //   const resize = () => setScreenWidth(window.innerWidth);
+  //   resize();
+  //   window.addEventListener("resize", resize);
+  //   return () => window.removeEventListener("resize", resize);
+  // }, []);
 
   /* ---------------- MERGE + FILTER + SORT (FROM OLD CODE) ---------------- */
   const mergedProductData = useMemo(() => {
@@ -187,10 +192,10 @@ export default function NewArrivals() {
       );
       return cart
         ? {
-            ...product,
-            cartQty: cart.quantity,
-            cartId: cart.id,
-          }
+          ...product,
+          cartQty: cart.quantity,
+          cartId: cart.id,
+        }
         : product;
     });
 
@@ -244,15 +249,26 @@ export default function NewArrivals() {
   const [index, setIndex] = useState(0);
 
   /* ---------------- AUTOPLAY ---------------- */
+  // useEffect(() => {
+  //   if (total <= itemsPerView) return;
+
+  //   const id = setInterval(() => {
+  //     setIndex((i) => (i + 1) % total);
+  //   }, 3000);
+
+  //   return () => clearInterval(id);
+  // }, [total, itemsPerView]);
+
   useEffect(() => {
-    if (total <= itemsPerView) return;
+    if (total <= itemsPerView || screenWidth < 768) return;
 
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % total);
     }, 3000);
 
     return () => clearInterval(id);
-  }, [total, itemsPerView]);
+  }, [total, itemsPerView, screenWidth]);
+
 
   /* ---------------- TOUCH SWIPE ---------------- */
   const startX = useRef(0);
@@ -289,53 +305,111 @@ export default function NewArrivals() {
 
   /* ---------------- UI ---------------- */
   return (
-    <section
-      className="py-2 mt-20"
-      style={{
-        backgroundImage: `url(${bg.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-semibold text-center mb-4">
-          New Arrivals
-        </h2>
+    // <section
+    //   className="py-2 mt-20"
+    //   style={{
+    //     backgroundImage: `url(${bg.src})`,
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //   }}
+    // >
+    //   <div className="max-w-7xl mx-auto px-4">
+    //     <h2 className="text-4xl font-semibold text-center mb-4">
+    //       New Arrivals
+    //     </h2>
 
-        <p className="text-center text-black mb-8">
-          Discover new healing crystals online — freshly charged and added weekly.
-        </p>
+    //     <p className="text-center text-black mb-8">
+    //       Discover new healing crystals online — freshly charged and added weekly.
+    //     </p>
 
-        <div
-          className="overflow-hidden"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
-          <div className="flex">
-            {visibleProducts.map((p: any, i: number) => (
-              <div
-                key={i}
-                style={{ width: itemWidth, marginRight: gap }}
-              >
-                {p ? (
-                <ProductCard
-                  image={p.image_urls[0] || ''}
-                  hoverImage={p.image_urls[1] || ''}
-                  title={p.name}
-                  price={p.price}
-                  onAddToCart={() => alert(`Add to cart: ${p.name}`)}
-                  onView={() => router.push(`/shop/${slugConvert(p?.name)}`)}
-                  onWishlist={() => alert(`Wishlist: ${p.name}`)}
-                  product={p}
-                />
-                ) : (
-                  <ProductCardSkeleton />
-                )}
-              </div>
-            ))}
+    //     <div
+    //       className="overflow-hidden"
+    //       onTouchStart={onTouchStart}
+    //       onTouchEnd={onTouchEnd}
+    //     >
+    //       <div className="flex">
+    //         {visibleProducts.map((p: any, i: number) => (
+    //           <div
+    //             key={i}
+    //             style={{ width: itemWidth, marginRight: gap }}
+    //           >
+    //             {p ? (
+    //             <ProductCard
+    //               image={p.image_urls[0] || ''}
+    //               hoverImage={p.image_urls[1] || ''}
+    //               title={p.name}
+    //               price={p.price}
+    //               onAddToCart={() => alert(`Add to cart: ${p.name}`)}
+    //               onView={() => router.push(`/shop/${slugConvert(p?.name)}`)}
+    //               onWishlist={() => alert(`Wishlist: ${p.name}`)}
+    //               product={p}
+    //             />
+    //             ) : (
+    //               <ProductCardSkeleton />
+    //             )}
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+    <section className="relative mt-20 min-h-[520px] overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src={bg}
+        alt="New Arrivals Background"
+        fill
+        priority={false}          // ❌ NOT priority (important)
+        sizes="100vw"
+        className="object-cover"
+      />
+
+      {/* Overlay (optional for text readability) */}
+      <div className="absolute inset-0 bg-white/80"></div>
+
+      {/* CONTENT */}
+      <div className="relative z-10 min-h-[520px] py-10">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
+            New Arrivals
+          </h2>
+
+          <p className="text-center text-black mb-8">
+            Discover new healing crystals online — freshly charged and added weekly.
+          </p>
+
+          <div
+            className="overflow-hidden"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            <div className="flex">
+              {visibleProducts.map((p: any, i: number) => (
+                <div
+                  key={i}
+                  style={{ width: itemWidth, marginRight: gap }}
+                >
+                  {p ? (
+                    <ProductCard
+                      image={p.image_urls[0] || ""}
+                      hoverImage={p.image_urls[1] || ""}
+                      title={p.name}
+                      price={p.price}
+                      onAddToCart={() => alert(`Add to cart: ${p.name}`)}
+                      onView={() => router.push(`/shop/${slugConvert(p?.name)}`)}
+                      onWishlist={() => alert(`Wishlist: ${p.name}`)}
+                      product={p}
+                    />
+                  ) : (
+                    <ProductCardSkeleton />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
+
   );
 }
