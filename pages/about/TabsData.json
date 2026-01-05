@@ -1,0 +1,115 @@
+{
+  "gallery": [
+    {
+      "id": 1,
+      "src": "/img/img1.webp"
+    },
+    {
+      "id": 2,
+      "src": "/img/img2.webp"
+    },
+    {
+      "id": 3,
+      "src": "/img/img3.webp"
+    },
+    {
+      "id": 4,
+      "src": "/img/img4.webp"
+    },
+    {
+      "id": 5,
+      "src": "/img/img5.webp"
+    },
+    {
+      "id": 6,
+      "src": "/img/img6.webp"
+    },
+    {
+      "id": 7,
+      "src": "/img/img7.webp"
+    },
+    {
+      "id": 8,
+      "src": "/img/img8.webp"
+    },
+    {
+      "id": 9,
+      "src": "/img/img9.webp"
+    },
+    {
+      "id": 10,
+      "src": "/img/img10.webp"
+    },
+    {
+      "id": 11,
+      "src": "/img/img11.webp"
+    },
+    {
+      "id": 12,
+      "src": "/img/img12.webp"
+    },
+    {
+      "id": 13,
+      "src": "/img/img13.webp"
+    },
+    {
+      "id": 14,
+      "src": "/img/img14.webp"
+    },
+    {
+      "id": 15,
+      "src": "/img/img15.webp"
+    },
+    {
+      "id": 16,
+      "src": "/img/img16.webp"
+    },
+    {
+      "id": 17,
+      "src": "/img/img17.webp"
+    },
+    {
+      "id": 18,
+      "src": "/img/img18.webp"
+    },
+    {
+      "id": 19,
+      "src": "/img/img19.webp"
+    },
+    {
+      "id": 20,
+      "src": "/img/img20.webp"
+    },
+    {
+      "id": 21,
+      "src": "/img/img21.webp"
+    },
+    {
+      "id": 22,
+      "src": "/img/img22.webp"
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "src": "https://www.youtube.com/embed/aaUqWvDoPDI?si=OePybruLuc1-oNti"
+    },
+    {
+      "id": 2,
+      "src": "https://www.youtube.com/embed/O3EH70Hph7s?si=n_LsrJs8OsOY1pjM"
+    },
+    {
+      "id": 3,
+      "src": "https://www.youtube.com/embed/G4Wl9WdPfzI?si=mLRTS1l7DjJSO74K"
+    },
+    {
+      "id": 4,
+      "src": "https://www.youtube.com/embed/QhY0sMN0FLo?si=3nokXePlouqBr0_V"
+    },
+    {
+      "id": 5,
+      "src": "https://www.youtube.com/embed/PlD9dHIQwD0?si=Y96XbM2KhoPyoj7V"
+    }
+  ],
+  "customers": []
+}

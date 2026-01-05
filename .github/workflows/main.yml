@@ -1,0 +1,37 @@
+name: Deploy Omsritara App via SSH
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 82.29.161.36 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: | 
+         ssh -o StrictHostKeyChecking=no root@82.29.161.36 <<EOF
+            set -e  # Stop on errors
+            cd /var/www/Omsritara_next
+             # Ensure remote is using SSH
+            git remote set-url origin git@github.com:Justvy-FTDS/Omsritara_next.git
+            # Set pull strategy
+            git config pull.rebase false 
+            git pull origin production
+            npm install
+            npm run build
+            pm2 restart Omsritara_next
+            systemctl restart nginx
+         EOF
