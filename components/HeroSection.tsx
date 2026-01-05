@@ -183,7 +183,7 @@ export default function HeroSection({ banners }: any) {
   };
 
   return (
-    <div className="z-10 md:h-[70vh] rounded-lg md:px-10 md:py-4">
+    <div className="z-10 md:h-[70vh] rounded-lg md:px-10 md:py-4 mt-3">
       <section
         className="relative w-full overflow-hidden select-none"
         onTouchStart={onTouchStart}

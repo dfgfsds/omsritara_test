@@ -32,7 +32,7 @@
 //                     name="description"
 //                     content="Shop healing crystals, Reiki crystal products & raw stones online in India. Omsritara – your trusted healing crystals shop online."
 //                 /> 
-                
+
 //                 */}
 //                 <link rel="icon" href="/favicon.ico" />
 //                 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -169,11 +169,23 @@ import { Toaster } from "react-hot-toast";
 import "quill/dist/quill.snow.css";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
+
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 1,
+            refetchOnWindowFocus: false,
+            staleTime: 1000 * 60 * 5, // 5 mins
+          },
+        },
+      })
+  );
 
   return (
     <>
-      {/* ================= SEO ONLY ================= */}
+      {/* ========== SEO ONLY ========== */}
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -182,7 +194,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      {/* ================= SCRIPTS (NON BLOCKING) ================= */}
+      {/* ========== ANALYTICS (NON BLOCKING) ========== */}
 
       {/* Google Analytics */}
       <Script
@@ -194,7 +206,7 @@ export default function App({ Component, pageProps }: AppProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-QR65DT0BZL');
+          gtag('config', 'G-QR65DT0BZL', { send_page_view: false });
         `}
       </Script>
 
@@ -211,7 +223,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </Script>
 
-      {/* Facebook Pixel */}
+      {/* Facebook Pixel – lazy */}
       <Script id="fb-pixel" strategy="lazyOnload">
         {`
           !function(f,b,e,v,n,t,s)
@@ -227,24 +239,20 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </Script>
 
-      {/* Microsoft Clarity */}
+      {/* Microsoft Clarity – lazy */}
       <Script id="clarity" strategy="lazyOnload">
         {`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            t=l.createElement(r);t.async=1;
+            t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "tvjlv787ac");
         `}
       </Script>
 
-      {/* Razorpay – VERY IMPORTANT: lazy */}
-      <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        strategy="lazyOnload"
-      />
-
-      {/* ================= APP ================= */}
+      {/* ========== APP ========== */}
       <QueryClientProvider client={queryClient}>
         <VendorProvider>
           <WishListProvider>

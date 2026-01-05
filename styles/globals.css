@@ -3,8 +3,12 @@
 @tailwind utilities;
 @import './fonts.css';
 
-body {
+/* body {
   font-family: 'Poppins', sans-serif;
+} */
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 
@@ -34,7 +38,7 @@ body {
 }
 
 @layer components {
-  .nav-item {
+  /* .nav-item {
     @apply px-2 py-1 inline-flex items-center gap-1 no-underline transition-transform duration-150 ease-out;
   }
 
@@ -42,7 +46,22 @@ body {
   .nav-item:focus-visible {
     @apply scale-110;
     text-decoration: none;
+  } */
+
+  .nav-item {
+    @apply px-2 py-1 inline-flex items-center gap-1 no-underline transition-transform duration-150 ease-out;
+    transform: translateZ(0);
+    /* GPU hint */
   }
+
+  .nav-item:hover,
+  .nav-item:focus-visible {
+    transform: scale(1.05);
+    /* smaller + safe */
+    will-change: transform;
+  }
+
+
 }
 
 .quill-content h1 {
