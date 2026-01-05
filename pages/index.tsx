@@ -12,14 +12,49 @@ import axios from "axios";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-const FeaturedCategories = dynamic(() => import("@/components/FeaturedCategories"), { ssr: false });
-const NewArrivals = dynamic(() => import("@/components/NewArrivals"), { ssr: false });
-const Bracelets = dynamic(() => import("@/components/SpecialPackages"), { ssr: false });
-const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: false });
-const BlogSection = dynamic(() => import("@/components/BlogSection"), { ssr: false });
-const Certificates = dynamic(() => import("@/components/Certificates"), { ssr: false });
-const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
-const FAQSection = dynamic(() => import("@/components/FAQ"), { ssr: false });
+// const FeaturedCategories = dynamic(() => import("@/components/FeaturedCategories"), { ssr: false });
+// const NewArrivals = dynamic(() => import("@/components/NewArrivals"), { ssr: false });
+// const Bracelets = dynamic(() => import("@/components/SpecialPackages"), { ssr: false });
+// const AboutSection = dynamic(() => import("@/components/AboutSection"), { ssr: false });
+// const BlogSection = dynamic(() => import("@/components/BlogSection"), { ssr: false });
+// const Certificates = dynamic(() => import("@/components/Certificates"), { ssr: false });
+// const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
+// const FAQSection = dynamic(() => import("@/components/FAQ"), { ssr: false });
+
+
+import FeaturedCategories from "@/components/FeaturedCategories";
+import BlogSection from "@/components/BlogSection";
+
+const NewArrivals = dynamic(() => import("@/components/NewArrivals"), {
+  ssr: false,
+  loading: () =>
+  (
+    <div className="h-[300px] flex items-center justify-center text-gray-400">
+      Loading products...
+    </div>
+  )
+});
+
+const Bracelets = dynamic(() => import("@/components/SpecialPackages"), {
+  ssr: false
+});
+
+const AboutSection = dynamic(() => import("@/components/AboutSection"), {
+  ssr: true
+});
+
+
+const Certificates = dynamic(() => import("@/components/Certificates"), {
+  ssr: true
+});
+
+const Testimonials = dynamic(() => import("@/components/Testimonials"), {
+  ssr: false
+});
+
+const FAQSection = dynamic(() => import("@/components/FAQ"), {
+  ssr: false
+});
 
 
 
