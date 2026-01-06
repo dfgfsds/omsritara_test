@@ -506,10 +506,10 @@ export default function CartSummary({ totalAmount, selectedProducts }: any) {
           <div className="text-center text-sm text-muted-foreground">
             <p>We accept:</p>
             <div className="flex justify-center gap-2 mt-2">
-              <Image height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/visa.svg" alt="Visa" className="h-6 w-auto opacity-70" />
-              <Image height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/mastercard.svg" alt="Mastercard" className="h-6 w-auto opacity-70" />
-              <Image height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/paypal.svg" alt="PayPal" className="h-6 w-auto opacity-70" />
-              <Image height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/applepay.svg" alt="Apple Pay" className="h-6 w-auto opacity-70" />
+              <Image unoptimized  height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/visa.svg" alt="Visa" className="h-6 w-auto opacity-70" />
+              <Image unoptimized  height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/mastercard.svg" alt="Mastercard" className="h-6 w-auto opacity-70" />
+              <Image unoptimized  height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/paypal.svg" alt="PayPal" className="h-6 w-auto opacity-70" />
+              <Image unoptimized  height={10} width={10} src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/applepay.svg" alt="Apple Pay" className="h-6 w-auto opacity-70" />
             </div>
           </div>
         </div>

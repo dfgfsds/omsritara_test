@@ -73,6 +73,7 @@ export default function SingleBlogPage({ blog }: { blog: Blog | null }) {
                         height={500}
                         width={800}
                         className="object-cover"
+                        unoptimized 
                     />
                 </div>
             )}

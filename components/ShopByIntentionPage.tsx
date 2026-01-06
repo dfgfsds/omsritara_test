@@ -35,6 +35,7 @@ export default function ShopByIntentionPage() {
                                         className="h-full w-full object-cover  transition-transform duration-500"
                                         width={300}
                                         height={288}
+                                        unoptimized
                                     />
                                 )}
 

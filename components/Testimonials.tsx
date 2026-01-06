@@ -244,6 +244,7 @@ export default function Testimonials() {
                         width={40}
                         height={40}
                         loading="lazy"
+                        unoptimized
                     />
                     <h2 className="text-2xl font-bold">
                         What Our Customers Say

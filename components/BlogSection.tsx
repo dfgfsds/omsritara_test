@@ -132,6 +132,7 @@ const BlogSection: React.FC<{ blogs: any[] }> = ({ blogs }) => {
                                                 loading="lazy"
                                                 sizes="(max-width: 768px) 100vw, 33vw"
                                                 className="object-cover transition-transform duration-300 hover:scale-105"
+                                                unoptimized
                                             />
                                         )}
 

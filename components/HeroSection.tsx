@@ -210,6 +210,7 @@ export default function HeroSection({ banners }: any) {
                 priority={index === 0}   // 🔥 LCP fix
                 sizes="100vw"
                 className="object-cover"
+                unoptimized
               />
             </div>
           ))}

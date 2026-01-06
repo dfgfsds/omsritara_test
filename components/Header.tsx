@@ -677,6 +677,7 @@ const Header: React.FC = () => {
               priority
               sizes="96px"
               className="h-auto"
+              unoptimized
             />
 
           </Link>

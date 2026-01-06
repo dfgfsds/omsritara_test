@@ -362,6 +362,7 @@ export default function NewArrivals() {
         priority={false}          // ❌ NOT priority (important)
         sizes="100vw"
         className="object-cover"
+        unoptimized 
       />
 
       {/* Overlay (optional for text readability) */}

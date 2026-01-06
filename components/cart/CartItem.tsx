@@ -110,7 +110,8 @@ export default function CartItem({ product, quantity: initialQuantity, selectedP
           className="w-full h-full object-cover"
           width={100}
           height={100}
-        />
+       unoptimized 
+       />
       </div>
 
       <div className="flex-grow">
