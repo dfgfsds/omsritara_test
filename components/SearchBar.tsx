@@ -394,6 +394,7 @@ const QuickSearch: React.FC<Props> = ({ products, label = 'Search...', defaultOp
                                             width={50}
                                             height={50}
                                             className="rounded-md object-cover border"
+                                            unoptimized
                                         />
                                     )}
 

@@ -33,6 +33,7 @@ const BlogAllPages: React.FC<{ blogs: any[] }> = ({ blogs }) => {
                                                 alt={post.title}
                                                 fill
                                                 className="object-cover"
+                                                unoptimized 
                                             />
                                         )}
 

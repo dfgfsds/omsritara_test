@@ -24,6 +24,7 @@ function OrderSuccessModal() {
           className="w-20 h-20 mx-auto mb-4"
           height={100}
           width={100}
+          unoptimized 
         />
         <h2 className="text-2xl font-semibold text-green-600 mb-2">
           Order Placed Successfully!

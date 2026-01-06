@@ -135,6 +135,7 @@ export default function ProfileOrders() {
                               className="w-full h-full object-cover"
                               height={100}
                               width={100}
+                              unoptimized 
                             />
                           )}
                         </div>

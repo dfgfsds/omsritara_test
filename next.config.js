@@ -31,10 +31,11 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, // 🔥 TEMP for lighthouse
+  // reactStrictMode: false, // 🔥 TEMP for lighthouse
 
   images: {
-    unoptimized: false,
+    unoptimized: true,
+    //  unoptimized: false,
 
     formats: ["image/avif", "image/webp"],
 

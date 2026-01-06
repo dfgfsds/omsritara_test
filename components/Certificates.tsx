@@ -164,6 +164,7 @@ export default function Certificates() {
                 height={120}
                 loading="lazy"
                 className="object-contain transition-transform duration-300 hover:scale-105"
+                unoptimized
               />
             </div>
           ))}

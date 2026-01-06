@@ -355,22 +355,22 @@ export default function FeaturedCategories() {
   // }, []);
 
   useEffect(() => {
-  const id = setInterval(() => {
-    setCurrent((p) => p + 1);
-  }, 2500);
+    const id = setInterval(() => {
+      setCurrent((p) => p + 1);
+    }, 2500);
 
-  return () => clearInterval(id);
-}, [current]);
+    return () => clearInterval(id);
+  }, [current]);
 
 
-useEffect(() => {
-  if (current >= total * (LOOP_COUNT - 2)) {
-    setCurrent(middleIndex);
-  }
-  if (current <= total) {
-    setCurrent(middleIndex);
-  }
-}, [current, total, middleIndex]);
+  useEffect(() => {
+    if (current >= total * (LOOP_COUNT - 2)) {
+      setCurrent(middleIndex);
+    }
+    if (current <= total) {
+      setCurrent(middleIndex);
+    }
+  }, [current, total, middleIndex]);
 
 
   /* swipe */
@@ -461,6 +461,7 @@ useEffect(() => {
                     height={160} // same as h-40
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    unoptimized
                   />
                 </div>
 

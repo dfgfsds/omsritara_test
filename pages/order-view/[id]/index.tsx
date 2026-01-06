@@ -267,6 +267,7 @@ function OrderSingleView() {
                                                 alt="product"
                                                 width={100}
                                                 height={100}
+                                                unoptimized 
                                             />
                                             <div className="flex flex-col justify-between w-full">
                                                 <div>

@@ -297,6 +297,7 @@ export default function ComboOffers() {
                                                         fill
                                                         className="object-cover"
                                                         sizes="(max-width: 768px) 100vw, 33vw"
+                                                        unoptimized 
                                                     />
                                                 </div>
                                             ))}
@@ -308,6 +309,7 @@ export default function ComboOffers() {
                                             fill
                                             className="object-cover rounded-t-lg sm:rounded-none"
                                             sizes="(max-width: 768px) 90vw, 33vw"
+                                            unoptimized 
                                         />
                                     )}
                                 </div>
