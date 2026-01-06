@@ -34,7 +34,7 @@ const nextConfig = {
   reactStrictMode: false, // 🔥 TEMP for lighthouse
 
   images: {
-    unoptimized: true,
+    unoptimized: false,
 
     formats: ["image/avif", "image/webp"],
 
